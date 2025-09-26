@@ -1,0 +1,4 @@
+#!/bin/sh
+
+clab deploy -t vxlan_sdn.yml 
+./setup.sh
