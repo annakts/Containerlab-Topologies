@@ -1,0 +1,10 @@
+frr defaults traditional
+hostname router2
+ip forwarding
+!
+interface eth1
+ ip address 10.1.1.2/30
+exit
+!
+ip route 0.0.0.0/0 10.1.1.1
+!
