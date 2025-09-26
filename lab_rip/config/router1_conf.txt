@@ -1,0 +1,18 @@
+frr defaults traditional
+hostname router1
+ip forwarding
+!
+interface eth1
+ ip address 192.168.1.1/24
+!
+interface eth2
+ ip address 172.17.17.1/30
+!
+interface eth3
+ ip address 172.17.17.5/30
+!
+router rip
+ network 192.168.1.0/24
+ network 172.17.17.0/30
+ network 172.17.17.4/30
+!
