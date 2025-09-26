@@ -1,0 +1,19 @@
+frr defaults traditional
+hostname leaf3
+ip forwarding
+!
+interface lo
+ ip address 172.22.22.5/32
+!
+interface eth1
+ ip address 10.1.1.18/30
+!
+interface eth2
+ ip address 10.1.1.22/30
+!
+router ospf
+ ospf router-id 172.22.22.5
+ network 172.22.22.5/32 area 0
+ network 10.1.1.16/30 area 0
+ network 10.1.1.20/30 area 0
+!
