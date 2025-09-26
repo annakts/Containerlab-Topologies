@@ -1,0 +1,21 @@
+frr defaults traditional
+hostname router1
+ip forwarding
+!
+interface lo
+ ip address 172.22.22.1/32
+ exit
+!
+interface eth1
+ ip address 10.1.1.1/30
+exit
+!
+interface eth2
+ ip address 10.1.1.5/30
+exit
+!
+router ospf
+ network 10.1.1.0/30 area 0
+ network 10.1.1.4/30 area 0
+exit
+!

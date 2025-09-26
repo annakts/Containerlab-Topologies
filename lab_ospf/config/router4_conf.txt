@@ -1,0 +1,21 @@
+frr defaults traditional
+hostname router4
+ip forwarding
+!
+interface lo
+ ip address 172.22.22.4/32
+ exit
+!
+interface eth1
+ ip address 192.168.1.1/24
+exit
+!
+interface eth2
+ ip address 10.1.1.10/30
+exit
+!
+router ospf
+ network 192.168.1.0/24 area 1
+ network 10.1.1.8/30 area 1
+exit
+!
