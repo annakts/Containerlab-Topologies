@@ -1,0 +1,35 @@
+name: ecmp_lab
+
+topology:
+
+  nodes:
+    PC1:
+      kind: linux
+      image: pktgen-container:latest
+      binds:
+        - /dev/netmap:/dev/netmap
+
+    PC2:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      binds:
+        - /dev/netmap:/dev/netmap
+      
+    router1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - daemons:/etc/frr/daemons
+        
+    router2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - daemons:/etc/frr/daemons 
+        
+   
+  links:
+    - endpoints: ["PC1:eth1", "router1:eth1"]
+    - endpoints: ["PC2:eth1", "router2:eth1"]
+    - endpoints: ["router1:eth2", "router2:eth2"]
+    - endpoints: ["router1:eth3", "router2:eth3"]
