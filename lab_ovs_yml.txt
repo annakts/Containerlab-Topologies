@@ -1,0 +1,19 @@
+name: lab_ovs
+
+topology:
+  nodes:
+    pc3:
+      kind: linux
+      image: wbitt/network-multitool:latest
+
+    pc4:
+      kind: linux
+      image: wbitt/network-multitool:latest
+
+    myovs:
+      kind: ovs-bridge
+
+      
+  links:
+    - endpoints: ["pc3:eth1", "myovs:ovsp1"]
+    - endpoints: ["pc4:eth1", "myovs:ovsp2"]
