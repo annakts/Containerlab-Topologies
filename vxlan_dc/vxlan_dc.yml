@@ -1,4 +1,4 @@
-name: vxlan_sdn
+name: vxlan_dc
 
 topology:
 
@@ -65,3 +65,4 @@ topology:
     - endpoints: ["leaf2:eth3", "PC2:eth1"]
     - endpoints: ["leaf2:eth4", "PC3:eth1"]
     - endpoints: ["leaf3:eth3", "PC4:eth1"]
+
