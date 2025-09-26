@@ -1,0 +1,16 @@
+name: linux_bridge
+
+topology:
+  nodes:
+    pc1:
+      kind: linux
+      image: wbitt/network-multitool:latest
+    pc2:
+      kind: linux
+      image: wbitt/network-multitool:latest
+    br01:
+      kind: bridge
+
+  links:
+    - endpoints: ["pc1:eth1", "br01:eth1"]
+    - endpoints: ["pc2:eth1", "br01:eth2"]

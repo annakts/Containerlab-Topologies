@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo docker exec clab-linux_bridge-pc1 ip addr add 192.168.1.1/24 dev eth1
+sudo docker exec clab-linux_bridge-pc2 ip addr add 192.168.1.2/24 dev eth1
+sudo docker exec clab-linux_bridge-pc1 ip link set eth1 up
+sudo docker exec clab-linux_bridge-pc2 ip link set eth1 up
