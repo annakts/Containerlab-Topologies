@@ -1,0 +1,56 @@
+name: lab_ospf
+
+topology:
+
+  nodes:
+    PC1:
+      kind: linux
+      image: wbitt/network-multitool:latest
+
+    PC2:
+      kind: linux
+      image: wbitt/network-multitool:latest
+      
+    router1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/router1.conf:/etc/frr/frr.conf 
+        
+    router2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/router2.conf:/etc/frr/frr.conf 
+        
+    router3:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/router3.conf:/etc/frr/frr.conf 
+        
+    router4:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/router4.conf:/etc/frr/frr.conf 
+        
+    router5:
+      kind: linux
+      image: quay.io/frrouting/frr:10.0.2
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/router5.conf:/etc/frr/frr.conf
+   
+
+  links:
+    - endpoints: ["PC1:eth1", "router4:eth1"]
+    - endpoints: ["PC2:eth1", "router5:eth1"]
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["router1:eth2", "router3:eth1"]
+    - endpoints: ["router2:eth2", "router4:eth2"]
+    - endpoints: ["router3:eth2", "router5:eth2"]
