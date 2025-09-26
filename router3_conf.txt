@@ -1,0 +1,16 @@
+frr defaults traditional
+hostname router3
+ip forwarding
+!
+interface eth1
+ ip address 192.168.2.1/24
+!
+interface eth2
+ ip address 10.1.1.6/30
+!
+router bgp 65030
+ no bgp ebgp-requires-policy
+ neighbor 10.1.1.5 remote-as 65020
+!
+ network 192.168.2.0/24
+!
