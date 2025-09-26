@@ -1,4 +1,0 @@
-#!/bin/sh
-
-clab deploy -t vxlan_sdn.yml --reconfigure
-./setup.sh
